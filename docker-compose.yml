@@ -1,0 +1,27 @@
+services:
+  kali:
+    build: .
+    container_name: kali-remote
+    restart: unless-stopped
+
+    # Change these if you like
+    environment:
+      - USERNAME=kali
+      - USER_PASSWORD=ChangeMe
+      - VNC_PASSWORD=ChangeMe
+      - DISPLAY=:1
+      - VNC_GEOMETRY=1920x1080
+      - VNC_DEPTH=24
+
+    ports:
+      - "2222:22"     # SSH to Kali
+      - "5901:5901"   # VNC (optional, if using a VNC app)
+      - "6080:6080"   # noVNC web GUI (best for iPad)
+
+    volumes:
+      - kali_home:/home/kali
+      - kali_root:/root
+
+volumes:
+  kali_home:
+  kali_root:
