@@ -1,0 +1,8 @@
+cat <<EOF > .gitignore
+.env
+*.log
+__pycache__/
+EOF
+git add .gitignore
+git commit -m "Add gitignore"
+git push
